@@ -1,16 +1,14 @@
 import React from 'react';
-import Header from '../Header/';
 import ItemList from '../../components/ItemList/'
 
-class CoreLayout extends React.Component {
+class Home extends React.Component {
   render() {
     return (
       <div className="">
-        <Header />
-        <ItemList />
+        <h1>Hello World!</h1>
       </div>
     );
   }
 }
 
-export default CoreLayout;
+export default Home;
