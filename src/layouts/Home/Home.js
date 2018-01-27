@@ -1,5 +1,4 @@
 import React from 'react';
-import ItemList from '../../components/ItemList/'
 
 class Home extends React.Component {
   render() {

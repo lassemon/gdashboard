@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../gofore-logo.png';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component{
   render(){
