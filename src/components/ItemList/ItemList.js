@@ -1,17 +1,20 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import AudioItem from '../../components/AudioItem/AudioItem.js'
+import AudioItem from '../../components/AudioItem';
+import Spinner from '../../components/Spinner';
+import {
+  fetchPodcasts
+} from '../../reducers/podcasts.js';
 
 class ItemList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        items: ['test', 'foo', 'bar']
-    };
+
+  componentDidMount() {
+    this.props.fetchPodcasts();
   }
 
   render(){
-
     const ItemListContainer = styled.div`
       padding: 0 1em;
       box-sizing: border-box;
@@ -21,8 +24,14 @@ class ItemList extends React.Component {
       list-style: none;
     `;
 
-    var items = this.state.items;
-    items =  items.map(function(item, index){
+    if(this.props.error) {
+      return (<span>error...</span>);
+    }
+    if(this.props.loading) {
+      return <Spinner />
+    }
+
+    var items = this.props.podcasts.map(function(item, index){
       return (
         <AudioItem item={item} key={index} />
       );
@@ -38,4 +47,17 @@ class ItemList extends React.Component {
   }
 };
 
-export default ItemList;
+const mapStateToProps = state => ({
+  loading: state.podcasts.isLoadingPodcasts,
+  error: state.podcasts.errorLoadingPodcasts,
+  podcasts: state.podcasts.podcasts
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchPodcasts
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemList)

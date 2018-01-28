@@ -9,7 +9,7 @@ class Podcasts extends React.Component {
     return (
       <div className="">
         <h1>Podcasts</h1>
-        <button onClick={() => this.props.changePage()}>Go to home</button>
+        {/*<button onClick={() => this.props.changePage()}>Go to home</button>*/}
         <ItemList />
       </div>
     );
