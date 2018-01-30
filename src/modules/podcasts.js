@@ -1,28 +1,33 @@
-import { LOADING_PODCASTS, GET_PODCASTS } from "../actions/podcasts.js";
+// actions
+export const LOADING_PODCASTS = 'LOADING_PODCASTS';
+export const GET_PODCASTS = 'GET_PODCASTS';
+
 const initialState = {
-  isLoadingPodcasts: false,
-  loadingPodcastsError: false,
-  podcasts: []
+  loading: false,
+  error: false,
+  items: []
 };
 
+// reducer
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_PODCASTS:
       return {
         ...state,
-        isLoadingPodcasts: true
+        loading: true
       };
     case GET_PODCASTS:
       return {
         ...state,
-        podcasts: action.payload,
-        isLoadingPodcasts: !state.isLoadingPodcasts
+        items: action.payload,
+        loading: !state.loading
       };
     default:
       return state;
   }
 };
 
+// action creator (async thunk)
 export const fetchPodcasts = () => {
   return dispatch => {
     dispatch({
@@ -32,8 +37,8 @@ export const fetchPodcasts = () => {
     return setTimeout(() => {
       dispatch({
         type: GET_PODCASTS,
-        payload: ['test', 'foo', 'bar']
+        payload: ['podcast 1', 'podcast 2', 'podcast 3']
       })
-    }, 2000)
+    }, 1500)
   }
 }

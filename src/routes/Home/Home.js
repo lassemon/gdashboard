@@ -1,11 +1,12 @@
 import React from 'react';
+import RootLayout from '../../layouts/RootLayout.js'
 
 class Home extends React.Component {
   render() {
     return (
-      <div className="">
+      <RootLayout>
         <h1>Home</h1>
-      </div>
+      </RootLayout>
     );
   }
 }
