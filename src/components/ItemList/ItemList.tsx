@@ -2,8 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import AudioItem from '../../components/AudioItem';
 
-class ItemList extends React.Component {
-  render(){
+import { Item } from 'interfaces';
+
+interface ItemListProps { items: Array<Item>; }
+interface ItemListState { }
+
+class ItemListComponent extends React.Component<ItemListProps, ItemListState> {
+  render() {
     const ItemListContainer = styled.div`
       padding: 0 1em;
       box-sizing: border-box;
@@ -13,9 +18,9 @@ class ItemList extends React.Component {
       list-style: none;
     `;
 
-    var items = this.props.items.map(function(item, index){
+    var items = this.props.items.map(function (item: Item, index: number) {
       return (
-        <AudioItem item={item} key={index} />
+        <AudioItem item={item.title} key={item.mediaId} />
       );
     });
     return (
@@ -25,8 +30,8 @@ class ItemList extends React.Component {
           {items}
         </ItemList>
       </ItemListContainer>
-    )
+    );
   }
-};
+}
 
-export default ItemList;
+export default ItemListComponent;

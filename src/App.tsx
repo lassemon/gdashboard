@@ -1,20 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './store';
 import { Route } from 'react-router-dom';
 import './index.css';
-import Home from './routes/Home/'
-import Podcasts from './routes/Podcasts/'
-import News from './routes/News/'
+import Home from './routes/Home/';
+import Podcasts from './routes/Podcasts/';
+import News from './routes/News/';
 
 class App extends React.Component {
-  render(){
+  render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div>
-            <Route exact path="/" component={Home} key="home" />
+            <Route exact={true} path="/" component={Home} key="home" />
             <Route path="/podcasts" component={Podcasts} key="podcasts" />
             <Route path="/news" component={News} key="news" />
           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import RootLayout from '../../layouts/RootLayout.js'
+import RootLayout from '../../layouts/RootLayout';
 
 class Home extends React.Component {
   render() {

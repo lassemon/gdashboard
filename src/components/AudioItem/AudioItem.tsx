@@ -1,7 +1,10 @@
 import React from 'react';
 
-class AudioItem extends React.Component{
-  render(){
+interface Props { item: string; key: number; }
+interface State { }
+
+class AudioItem extends React.Component<Props, State> {
+  render() {
     return (
       <li>
         <div className="item">
@@ -10,6 +13,6 @@ class AudioItem extends React.Component{
       </li>
     );
   }
-};
+}
 
 export default AudioItem;

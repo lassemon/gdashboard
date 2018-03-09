@@ -10,9 +10,11 @@ class RootLayout extends React.Component {
 
     return [
       <Header key="header" />,
-      <Main key="main" role="main">
-        {this.props.children}
-      </Main>
+      (
+        <Main key="main" role="main">
+          {this.props.children}
+        </Main>
+      )
     ];
   }
 }

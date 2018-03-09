@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from '../../gofore-logo.png';
+const logo = require('../../gofore-logo.png');
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-class Header extends React.Component{
-  render(){
+class HeaderComponent extends React.Component {
+  render() {
     const Logo = styled.img`
       height: 4em;
     `;
@@ -55,6 +55,6 @@ class Header extends React.Component{
       </Header>
     );
   }
-};
+}
 
-export default Header;
+export default HeaderComponent;

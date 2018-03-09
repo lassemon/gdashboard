@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class Spinner extends React.Component{
-  render(){
+class Spinner extends React.Component {
+  render() {
     const SpinnerContainer = styled.div`
       margin: 0 auto;
       width: 6em;
@@ -59,14 +59,14 @@ class Spinner extends React.Component{
 
     return (
       <SpinnerContainer>
-        <div className="rect1"></div>
-        <div className="rect2"></div>
-        <div className="rect3"></div>
-        <div className="rect4"></div>
-        <div className="rect5"></div>
+        <div className="rect1" />
+        <div className="rect2" />
+        <div className="rect3" />
+        <div className="rect4" />
+        <div className="rect5" />
       </SpinnerContainer>
     );
   }
-};
+}
 
 export default Spinner;
