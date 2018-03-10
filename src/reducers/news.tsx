@@ -1,5 +1,4 @@
-import { ApiAction, FetchNewsPayload } from '../types';
-import { LOADING_NEWS, GET_NEWS } from './newsActions';
+import { LOADING_NEWS, GET_NEWS, NewsAction } from '../actions/news';
 
 const initialState = {
   loading: false,
@@ -7,8 +6,7 @@ const initialState = {
   items: []
 };
 
-// reducer
-export default (state = initialState, action: ApiAction<FetchNewsPayload>) => {
+export default (state = initialState, action: NewsAction) => {
   switch (action.type) {
     case LOADING_NEWS:
       return {
@@ -19,7 +17,7 @@ export default (state = initialState, action: ApiAction<FetchNewsPayload>) => {
       return {
         ...state,
         items: action.payload,
-        loading: !state.loading
+        loading: false
       };
     default:
       return state;

@@ -1,45 +1,21 @@
 import { Action, ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { NewsState } from '../types';
-import { Item } from 'interfaces';
+import { RequestAction, LoadingAction, NewsState, GetNewsPayload } from '../types';
 
-// actions
 export const LOADING_NEWS = 'LOADING_NEWS';
 export type LOADING_NEWS_TYPE = typeof LOADING_NEWS; // Is equal to type LOADING_NEWS = 'LOADING_NEWS';
-export interface LoadingNews {
-  type: LOADING_NEWS_TYPE;
-  payload: '';
+interface LoadingNewsAction extends LoadingAction {
+  readonly type: LOADING_NEWS_TYPE;
 }
-
-export const loadingNewsAction: ActionCreator<Action> = () => {
-  return {
-    type: LOADING_NEWS
-  };
-};
 
 export const GET_NEWS = 'GET_NEWS';
-export type GET_NEWS = typeof GET_NEWS; // Is equal to type GET_NEWS = 'GET_NEWS';
-export interface GetNews {
-  type: GET_NEWS;
-  payload: Array<string>;
+export type GET_NEWS_TYPE = typeof GET_NEWS; // Is equal to type GET_NEWS = 'GET_NEWS';
+interface GetNewsAction extends RequestAction<GetNewsPayload> {
+  readonly type: GET_NEWS_TYPE;
+  payload: GetNewsPayload;
 }
 
-export const getNewsAction: ActionCreator<Action> = (news: Array<Item>) => {
-  return {
-    type: GET_NEWS,
-    payload: news
-  };
-};
-
-function resolveAfter2Seconds(x: Item[]) {
-  return new Promise(resolve => {
-    setTimeout(
-      () => {
-        resolve(x);
-      },
-      2000);
-  });
-}
+export type NewsAction = LoadingNewsAction | GetNewsAction;
 
 // action creator (async thunk)
 
@@ -48,6 +24,7 @@ function resolveAfter2Seconds(x: Item[]) {
 // ThunkAction is the type for asyncronous actions. ThunkAction<R, S, E>
 // R : return value of ThunkAction
 // S : type of Dispatch
+// E : optional extra argument
 //
 // ThunkAction is a function that takes in
 //  - dispatch <= of type Dispatch<S>
@@ -75,3 +52,14 @@ export const fetchNews: ActionCreator<
       });
     };
   };
+
+// temporary helper function to mock backend request
+function resolveAfter2Seconds(x: GetNewsPayload) {
+  return new Promise(resolve => {
+    setTimeout(
+      () => {
+        resolve(x);
+      },
+      1500);
+  });
+}

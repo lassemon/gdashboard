@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 import RootLayout from '../../layouts/RootLayout';
 import ItemList from '../../components/ItemList';
 import Spinner from '../../components/Spinner';
-import { fetchNews } from '../../modules/newsActions';
+import { fetchNews } from '../../actions/news';
 import { RootState, NewsState, } from '../../types';
 import { Item } from 'interfaces';
 

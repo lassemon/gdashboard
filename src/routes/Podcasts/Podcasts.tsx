@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 import RootLayout from '../../layouts/RootLayout';
 import ItemList from '../../components/ItemList';
 import Spinner from '../../components/Spinner';
-import { fetchPodcasts } from '../../modules/podcastActions';
+import { fetchPodcasts } from '../../actions/podcasts';
 import { Item } from 'interfaces';
 import { PodcastsState, RootState } from '../../types';
 

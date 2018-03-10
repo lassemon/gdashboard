@@ -1,5 +1,4 @@
-import { ApiAction, FetchPodcastsPayload } from '../types';
-import { LOADING_PODCASTS, GET_PODCASTS, } from './podcastActions';
+import { LOADING_PODCASTS, GET_PODCASTS, PodcastAction } from '../actions/podcasts';
 
 const initialState = {
   loading: false,
@@ -7,8 +6,7 @@ const initialState = {
   items: []
 };
 
-// reducer
-export default (state = initialState, action: ApiAction<FetchPodcastsPayload>) => {
+export default (state = initialState, action: PodcastAction) => {
   switch (action.type) {
     case LOADING_PODCASTS:
       return {
@@ -19,7 +17,7 @@ export default (state = initialState, action: ApiAction<FetchPodcastsPayload>) =
       return {
         ...state,
         items: action.payload,
-        loading: !state.loading
+        loading: false
       };
     default:
       return state;
