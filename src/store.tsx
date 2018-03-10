@@ -7,7 +7,6 @@ import rootReducer from './reducers/root';
 export const history = createHistory();
 
 const initialState = {};
-// tslint:disable-next-line:no-any
 const enhancers: Array<any> = [];
 const middleware = [
   thunk,

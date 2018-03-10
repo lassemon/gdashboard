@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import AudioItem from '../../components/AudioItem';
+import VideoItem from '../../components/VideoItem';
 
-import { Item } from 'interfaces';
+import { Media } from 'interfaces';
 
-interface ItemListProps { items: Array<Item>; }
+interface ItemListProps { items: Array<Media>; }
 interface ItemListState { }
 
 class ItemListComponent extends React.Component<ItemListProps, ItemListState> {
@@ -18,10 +19,16 @@ class ItemListComponent extends React.Component<ItemListProps, ItemListState> {
       list-style: none;
     `;
 
-    var items = this.props.items.map(function (item: Item, index: number) {
-      return (
-        <AudioItem item={item.title} key={item.mediaId} />
-      );
+    const items = this.props.items.map(function (item: Media, index: number) {
+      if (item.type === 'Audio') {
+        return (
+          <AudioItem item={item.title} key={item.mediaId} />
+        );
+      } else {
+        return (
+          <VideoItem item={item.title} key={item.mediaId} />
+        );
+      }
     });
     return (
       <ItemListContainer>
@@ -29,7 +36,7 @@ class ItemListComponent extends React.Component<ItemListProps, ItemListState> {
         <ItemList className="styleMap.itemList">
           {items}
         </ItemList>
-      </ItemListContainer>
+      </ItemListContainer >
     );
   }
 }

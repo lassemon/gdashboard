@@ -41,9 +41,9 @@ export const fetchNews: ActionCreator<
 
       const news = await resolveAfter2Seconds(
         [
-          { title: 'news 1', mediaId: 1 },
-          { title: 'news 2', mediaId: 2 },
-          { title: 'news 3', mediaId: 3 }
+          { mediaId: '1', title: 'news 1', text: 'foo bar' },
+          { mediaId: '2', title: 'news 2', text: 'foo bar' },
+          { mediaId: '3', title: 'news 3', text: 'foo bar' }
         ]
       );
       return dispatch({

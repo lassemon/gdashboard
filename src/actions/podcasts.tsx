@@ -42,9 +42,9 @@ export const fetchPodcasts: ActionCreator<
 
       const podcasts = await resolveAfter2Seconds(
         [
-          { title: 'podcast 1', mediaId: 1 },
-          { title: 'podcast 2', mediaId: 2 },
-          { title: 'podcast 3', mediaId: 3 }
+          { mediaId: '1', title: 'podcast 1', description: '', tags: [], type: 'Video', url: '' },
+          { mediaId: '2', title: 'podcast 2', description: '', tags: [], type: 'Audio', url: '' },
+          { mediaId: '3', title: 'podcast 3', description: '', tags: [], type: 'Video', url: '' }
         ]
       );
       return dispatch({

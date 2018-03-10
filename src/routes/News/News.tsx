@@ -3,20 +3,20 @@ import { bindActionCreators, ActionCreator, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import RootLayout from '../../layouts/RootLayout';
-import ItemList from '../../components/ItemList';
+import ArticleList from '../../components/ArticleList';
 import Spinner from '../../components/Spinner';
 import { fetchNews } from '../../actions/news';
 import { RootState, NewsState, } from '../../types';
-import { Item } from 'interfaces';
+import { News } from 'interfaces';
 
 interface Props {
   fetchNews: ActionCreator<ThunkAction<Promise<Action>, NewsState, void>>;
   loading: boolean;
   error: boolean;
-  items: Array<Item>;
+  items: Array<News>;
 }
 
-class News extends React.Component<Props, {}> {
+class NewsView extends React.Component<Props, {}> {
   componentDidMount() {
     this.props.fetchNews();
   }
@@ -31,7 +31,7 @@ class News extends React.Component<Props, {}> {
         {loading ? (
           <Spinner />
         ) : (
-            <ItemList items={items} />
+            <ArticleList items={items} />
           )}
       </RootLayout>
     );
@@ -56,4 +56,4 @@ const mapDispatchToProps = (dispatch: Dispatch<NewsState>) => bindActionCreators
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(News);
+)(NewsView);

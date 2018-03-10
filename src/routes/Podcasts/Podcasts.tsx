@@ -3,17 +3,17 @@ import { bindActionCreators, ActionCreator, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import RootLayout from '../../layouts/RootLayout';
-import ItemList from '../../components/ItemList';
+import MediaList from '../../components/MediaList';
 import Spinner from '../../components/Spinner';
 import { fetchPodcasts } from '../../actions/podcasts';
-import { Item } from 'interfaces';
+import { Media } from 'interfaces';
 import { PodcastsState, RootState } from '../../types';
 
 interface Props {
   fetchPodcasts: ActionCreator<ThunkAction<Promise<Action>, PodcastsState, void>>;
   loading: boolean;
   error: boolean;
-  items: Array<Item>;
+  items: Array<Media>;
 }
 
 class Podcasts extends React.Component<Props, {}> {
@@ -31,7 +31,7 @@ class Podcasts extends React.Component<Props, {}> {
         {loading ? (
           <Spinner />
         ) : (
-            <ItemList items={items} />
+            <MediaList items={items} />
           )}
       </RootLayout>
     );

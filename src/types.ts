@@ -1,4 +1,4 @@
-import { Item } from 'interfaces';
+import { Media, News } from 'interfaces';
 
 // state types
 export interface RootState {
@@ -9,13 +9,13 @@ export interface RootState {
 export type PodcastsState = {
   loading: boolean,
   error: boolean,
-  items: Array<Item>
+  items: Array<Media>
 };
 
 export type NewsState = {
   loading: boolean,
   error: boolean,
-  items: Array<Item>
+  items: Array<News>
 };
 
 // action types
@@ -29,5 +29,5 @@ export interface LoadingAction {
 }
 
 // payload types
-export type GetNewsPayload = Array<Item>;
-export type GetPodcastsPayload = Array<Item>;
+export type GetPodcastsPayload = Array<Media>;
+export type GetNewsPayload = Array<News>;
